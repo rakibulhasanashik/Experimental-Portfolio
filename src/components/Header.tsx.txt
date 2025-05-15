@@ -79,27 +79,25 @@ const Header: React.FC = () => {
         
         <div className="flex items-center space-x-2 sm:space-x-3">
           {/* Theme toggle with stars - fixed proportional size across all devices */}
-          <button 
-            onClick={toggleTheme} 
-            className="relative h-8 sm:h-9 w-8 xs:w-8 sm:w-9 rounded-full flex items-center justify-center overflow-hidden transition-all duration-300"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            <div className={`absolute inset-0 transition-all duration-500 rounded-full flex items-center px-1 ${theme === 'dark' ? 'bg-[#1a237e]' : 'bg-[#a3d8f4]'}`}>
-              {theme === 'dark' && renderStars()}
-              <div className={`h-6 w-6 sm:h-7 sm:w-7 rounded-full flex items-center justify-center transition-all duration-500 transform ${theme === 'dark' ? 'ml-auto bg-[#0d1642]' : 'ml-0 bg-[#FFD700]'}`}>
-                {theme === 'dark' ? (
-                  <Moon size={14} className="text-white" />
-                ) : (
-                  <div className="relative">
-                    <Sun size={14} className="text-[#FFD700]" />
-                    <div className="absolute top-0 right-0 h-1.5 w-1.5 rounded-full bg-white transform translate-x-1 -translate-y-1"></div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </button>
-          
-          <button 
+<button 
+  onClick={toggleTheme} 
+  className="relative h-[40px] w-[85px] rounded-full flex items-center justify-center overflow-hidden transition-all duration-300"
+  aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+>
+  <div className={`absolute inset-0 transition-all duration-500 rounded-full flex items-center px-1 ${theme === 'dark' ? 'bg-[#1a237e]' : 'bg-[#a3d8f4]'}`}>
+    {theme === 'dark' && renderStars()}
+    <div className={`h-6 w-6 sm:h-7 sm:w-7 rounded-full flex items-center justify-center transition-all duration-500 transform ${theme === 'dark' ? 'ml-auto bg-[#0d1642]' : 'ml-0 bg-[#FFD700]'}`}>
+      {theme === 'dark' ? (
+        <Moon size={14} className="text-white" />
+      ) : (
+        <div className="relative">
+          <Sun size={14} className="text-[#FFD700]" />
+          <div className="absolute top-0 right-0 h-1.5 w-1.5 rounded-full bg-white transform translate-x-1 -translate-y-1"></div>
+        </div>
+      )}
+    </div>
+  </div>
+</button>
             className="bg-[#6a0dad] clean-shine-button px-3 sm:px-4 py-1.5 sm:py-2 rounded-full hover:bg-opacity-80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] font-medium text-xs sm:text-sm text-white"
             onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
           >
