@@ -76,7 +76,7 @@ const Hero = () => {
           <div className="mb-6">
             <div className="text-2xl md:text-4xl font-black mb-4 leading-tight">
               <div className="flex justify-center">
-                <span className="hero-title">YOUR DESIGN</span>
+                <span className="hero-title">ABID HASAN SARDER</span>
               </div>
               <div className="text-4xl md:text-5xl mt-3 flex justify-center">
                 You Know Me, <span className="typing-text ml-2 text-[#E5E4E2] font-bold">{text}</span>
