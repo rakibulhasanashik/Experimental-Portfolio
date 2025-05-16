@@ -62,7 +62,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`py-3 sm:py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-portfolio-bg/80 shadow-lg shadow-black/10' : 'bg-transparent'}`}>
+    <header className={`py-3 sm:py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-white/80 dark:bg-[#6F8FAF]/80 shadow-lg shadow-black/10' : 'bg-transparent'}`}>
       <div className="content-container flex justify-between items-center">
         <div className="flex items-center space-x-1 xs:space-x-2">
           <img 
