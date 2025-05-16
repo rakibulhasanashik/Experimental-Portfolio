@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           <img 
             src="/lovable-uploads/56f9f30e-b191-48c3-87d0-a7f463c49c62.png" 
             alt="Logo" 
-            className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-full object-cover animate-pulse-soft"
+            className="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 rounded-full object-cover animate-pulse-soft"
           />
           <img 
             src="/lovable-uploads/aceff394-cfb9-4c0b-9ef2-f50330110926.png" 
