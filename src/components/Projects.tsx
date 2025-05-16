@@ -127,53 +127,59 @@ const Projects: React.FC<ProjectsProps> = ({
     }
   ];
   
-  const filteredProjects = activeCategory === "All" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+  const filteredProjects = filter === "all" 
+    ? projectsData 
+    : projectsData.filter(project => project.category === filter);
 
   return (
     <section className="py-24 relative" id="work">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
-      
       <div className="content-container">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
-          <span className="hero-title">FEATURED PROJECTS</span>
-          <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
-        </h2>
-
-        {/* Category buttons with same style as Timeline section */}
         <div className="mb-12">
-          <div className="flex flex-wrap gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`tag px-4 py-2 transition-all duration-300 ${activeCategory === category ? 'bg-white text-black dark:bg-portfolio-accent dark:text-white' : 'hover:bg-white/10'}`}
-              >
-                {category}
-              </button>
-            ))}
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in relative inline-block">
+            <span className="hero-title">FEATURED PROJECTS</span>
+            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
+          </h2>
+          
+          <div className="flex space-x-4 animate-fade-in">
+            <button 
+              className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+              onClick={() => setFilter("all")}
+            >
+              All
+            </button>
+            <button 
+              className={`tag px-4 py-2 transition-all duration-300 ${filter === 'exploration' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+              onClick={() => setFilter("exploration")}
+            >
+              Exploration
+            </button>
+            <button 
+              className={`tag px-4 py-2 transition-all duration-300 ${filter === 'case-study' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+              onClick={() => setFilter("case-study")}
+            >
+              Case Study
+            </button>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard 
-              project={project} 
-              key={project.id} 
-              animationDelay={`animate-delay-${(index + 1) * 100}`} 
+            <ProjectCard
+              key={index}
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              tags={project.tags}
+              animationDelay={`animate-delay-${(index + 1) * 100}`}
             />
           ))}
         </div>
         
         <div className="flex justify-center mt-16">
-          <Link 
-            to="/projects"
-            className="social-button flex items-center space-x-2 animate-fade-in group hover-effect hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
-          >
-            <span>Unfold More</span>
-            <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <button className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50">
+            <span>See More</span>
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
       </div>
     </section>
