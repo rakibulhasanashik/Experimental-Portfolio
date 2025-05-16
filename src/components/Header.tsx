@@ -86,7 +86,7 @@ const Header: React.FC = () => {
           >
             <div className={`absolute inset-0 transition-all duration-500 rounded-full flex items-center px-1 ${theme === 'dark' ? 'bg-[#1a237e]' : 'bg-[#a3d8f4]'}`}>
               {theme === 'dark' && renderStars()}
-              <div className={`h-6 w-6 rounded-full flex items-center justify-center transition-all duration-500 transform ${theme === 'dark' ? 'ml-auto bg-[#0d1642]' : 'ml-0 bg-[#FFD700]'}`}>
+              <div className={`h-7 w-7 rounded-full flex items-center justify-center transition-all duration-500 transform ${theme === 'dark' ? 'ml-auto bg-[#0d1642]' : 'ml-0 bg-[#FFD700]'}`}>
                 {theme === 'dark' ? (
                   <Moon size={12} className="text-white" />
                 ) : (
