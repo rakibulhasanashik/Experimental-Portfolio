@@ -81,7 +81,7 @@ const Header: React.FC = () => {
           {/* Theme toggle with stars - matched height with Contact button and smaller width */}
           <button 
             onClick={toggleTheme} 
-            className="relative h-8 w-[56px] xs:w-[56px] sm:w-[100px] rounded-full flex items-center justify-center overflow-hidden transition-all duration-300"
+            className="relative h-8 w-[56px] xs:w-[56px] sm:w-[78px] rounded-full flex items-center justify-center overflow-hidden transition-all duration-300"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             <div className={`absolute inset-0 transition-all duration-500 rounded-full flex items-center px-1 ${theme === 'dark' ? 'bg-[#1a237e]' : 'bg-[#a3d8f4]'}`}>
