@@ -74,7 +74,7 @@ const Hero = () => {
       <div className="content-container z-10 relative">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-6">
-            <div className="text-3xl md:text-4xl font-black mb-4 leading-tight">
+            <div className="text-5xl md:text-7xl font-black mb-4 leading-tight">
               <div className="flex justify-center">
                 <span className="hero-title">ABID HASAN SARDER</span>
               </div>
