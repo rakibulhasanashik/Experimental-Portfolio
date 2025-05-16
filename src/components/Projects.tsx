@@ -163,24 +163,24 @@ const Projects: React.FC<ProjectsProps> = ({
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              tags={project.tags}
-              animationDelay={`animate-delay-${(index + 1) * 100}`}
+            <ProjectCard 
+              project={project} 
+              key={project.id} 
+              animationDelay={`animate-delay-${(index + 1) * 100}`} 
             />
           ))}
         </div>
         
         <div className="flex justify-center mt-16">
-          <button className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50">
-            <span>See More</span>
-            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-          </button>
+          <Link 
+            to="/projects"
+            className="social-button flex items-center space-x-2 animate-fade-in group hover-effect hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
+          >
+            <span>Unfold More</span>
+            <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>
