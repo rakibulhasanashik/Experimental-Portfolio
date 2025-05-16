@@ -1,93 +1,3 @@
-
-import React from "react";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  technologies: string[];
-  category: string;
-  slug: string;
-};
-
-interface ProjectCardProps {
-  project: Project; 
-  animationDelay: string;
-}
-
-interface ProjectsProps {
-  activeCategory?: string;
-  setActiveCategory?: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const ProjectCard = ({ project, animationDelay }: ProjectCardProps) => (
-  <div 
-    className={`project-card card-hover animate-fade-in glow-effect backdrop-blur-sm ${animationDelay}`}
-  >
-    <div className="relative group overflow-hidden rounded-t-xl">
-      <div className="aspect-[16/9] overflow-hidden">
-        <img 
-          src={project.imageUrl} 
-          alt={project.title} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
-        <div className="p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-          <Link 
-            to={`/project-details/${project.slug}`} 
-            className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group"
-          >
-            View Full Project
-            <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </div>
-    </div>
-    
-    <div className="p-6 relative z-10">
-      <h3 className="text-2xl font-bold mb-2 hover:text-portfolio-accent transition-colors duration-300">{project.title}</h3>
-      <p className="text-portfolio-text-muted mb-5 text-sm">{project.description}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        <span 
-          className="tag bg-black/30 hover:bg-portfolio-accent/20 transition-all duration-300 transform hover:scale-105"
-        >
-          {project.category}
-        </span>
-        {project.technologies.map((tech, idx) => (
-          <span 
-            key={idx} 
-            className="tag bg-black/30 hover:bg-portfolio-accent/20 transition-all duration-300 transform hover:scale-105"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="flex justify-between items-center">
-        <Link 
-          to={`/project-details/${project.slug}`}
-          className="inline-flex items-center text-sm font-medium text-portfolio-accent hover:text-portfolio-accent/80 transition-colors group"
-        >
-          Full Insight
-          <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-        </Link>
-        <a href="#" className="text-portfolio-text-muted hover:text-portfolio-accent transition-colors p-2 rounded-full bg-black/30 hover:bg-black/50 transition-all duration-300">
-          <ExternalLink size={16} />
-        </a>
-      </div>
-    </div>
-  </div>
-);
-
-const Projects: React.FC<ProjectsProps> = ({ 
-  activeCategory = "All", 
-  setActiveCategory = () => {} 
-}) => {
-  const categories = ["All", "Web App", "Mobile", "Dashboard", "Social"];
-  
   const projects: Project[] = [
     {
       id: 1,
@@ -179,3 +89,5 @@ const Projects: React.FC<ProjectsProps> = ({
     </section>
   );
 };
+
+export default Projects;
