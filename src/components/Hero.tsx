@@ -79,7 +79,7 @@ const Hero = () => {
                 <span className="hero-title">ABID HASAN SARDER</span>
               </div>
               <div className="text-2xl md:text-5xl mt-3 flex justify-center">
-                You Know Me, <span className="typing-text ml-2 text-[#ED2939] font-bold">{text}</span>
+                You Know Me, <span className="typing-text ml-2 text-[#E5E4E2] font-bold">{text}</span>
                 <span className={`inline-block w-1.5 h-6 bg-portfolio-accent ml-1 align-middle animate-[blink_0.7s_infinite]`}></span>
               </div>
             </div>
