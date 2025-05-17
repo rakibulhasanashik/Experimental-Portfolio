@@ -86,7 +86,7 @@ const Projects: React.FC<ProjectsProps> = ({
   activeCategory = "All", 
   setActiveCategory = () => {} 
 }) => {
-  const categories = ["All", "Web App", "Mobile", "Dashboard", "Social"];
+  const categories = ["All", "exploration", "case-study"];
   
   const projects: Project[] = [
     {
@@ -95,7 +95,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A fully functional e-commerce platform with user authentication, product catalog, shopping cart, and checkout process.",
       imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "Node.js", "Express"],
-      category: "Web App",
+      category: "case-study",
       slug: "ecommerce-platform"
     },
     {
@@ -104,7 +104,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A mobile application for managing tasks, setting reminders, and tracking progress.",
       imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vYmlsZSUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React Native", "Firebase"],
-      category: "Mobile",
+      category: "exploration",
       slug: "mobile-task-manager"
     },
     {
@@ -113,7 +113,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A web-based dashboard for visualizing data from various sources, with interactive charts and graphs.",
       imageUrl: "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRhc2hib2FyZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "D3.js", "GraphQL"],
-      category: "Dashboard",
+      category: "case-study",
       slug: "data-visualization-dashboard"
     },
     {
@@ -122,7 +122,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A social media application for connecting with friends, sharing updates, and joining communities.",
       imageUrl: "https://images.unsplash.com/photo-1505051589839-6036ac548a68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "Redux", "Firebase"],
-      category: "Social",
+      category: "exploration",
       slug: "social-media-app"
     }
   ];
