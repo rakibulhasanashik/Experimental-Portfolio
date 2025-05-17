@@ -1,12 +1,15 @@
+
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
   tags: string[];
+  slug: string;
   className?: string;
   animationDelay?: string;
 }
@@ -16,6 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   image,
   tags,
+  slug,
   className,
   animationDelay = "",
 }) => {
@@ -35,10 +39,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
           <div className="p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <a href="#" className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group">
+            <Link 
+              to={`/project-details/${slug}`} 
+              className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group"
+            >
               View Full Project
               <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -57,10 +64,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ))}
         </div>
         <div className="flex justify-between items-center">
-          <a href="#" className="inline-flex items-center text-sm font-medium hover:text-portfolio-accent transition-colors group">
-            Details
+          <Link 
+            to={`/project-details/${slug}`}
+            className="inline-flex items-center text-sm font-medium hover:text-portfolio-accent transition-colors group"
+          >
+            Full Insight
             <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
           <a href="#" className="text-portfolio-text-muted hover:text-portfolio-accent transition-colors p-2 rounded-full bg-black/30 hover:bg-black/50 transition-all duration-300">
             <ExternalLink size={16} />
           </a>
@@ -81,35 +91,55 @@ const Projects: React.FC = () => {
       description: "With this concept of the website you can see your stats during games when you are streaming and a lot of viewer stats.",
       image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&q=80&w=1000",
       tags: ["UI/UX", "Dashboard", "Gaming"],
-      category: "case-study"
+      category: "exploration",
+      slug: "gaming-streaming-dashboard"
     },
     {
       title: "Music Player App",
       description: "Ultra modern design | Modern concept which I experimented with different colors, clean design and neat layout.",
       image: "https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&q=80&w=1000",
       tags: ["Mobile", "App Design", "Music"],
-      category: "exploration"
+      category: "case-study",
+      slug: "music-player-app"
     },
     {
       title: "Task Management App",
       description: "Clean and minimalist task management mobile app design with user-friendly interface.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
       tags: ["Mobile", "UI Design", "Productivity"],
-      category: "case-study"
+      category: "exploration",
+      slug: "task-management-app"
     },
     {
       title: "Real Estate Landing Page",
       description: "Custom landing page for real estate agency designed to boost conversion rates.",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000",
       tags: ["Web Design", "Landing Page", "Real Estate"],
-      category: "exploration"
+      category: "case-study",
+      slug: "real-estate-landing-page"
+    },
+    {
+      title: "Financial Analytics Platform",
+      description: "Comprehensive financial data visualization and analytics dashboard for enterprise users.",
+      image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1000",
+      tags: ["UI/UX", "Dashboard", "Analytics"],
+      category: "case-study",
+      slug: "financial-analytics-platform"
+    },
+    {
+      title: "E-Commerce Mobile App",
+      description: "Feature-rich shopping application with seamless checkout flow and personalized recommendations.",
+      image: "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&q=80&w=1000",
+      tags: ["Mobile", "E-Commerce", "App Design"],
+      category: "exploration",
+      slug: "ecommerce-mobile-app"
     }
   ];
 
   const filteredProjects = filter === "all" 
     ? projectsData 
     : projectsData.filter(project => project.category === filter);
-
+    
   return (
     <section className="py-24 relative" id="work">
       <div className="content-container">
@@ -119,7 +149,7 @@ const Projects: React.FC = () => {
             <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
           </h2>
           
-          <div className="flex space-x-4 animate-fade-in">
+          <div className="flex flex-wrap space-x-2 space-y-2 sm:space-y-0 animate-fade-in">
             <button 
               className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
               onClick={() => setFilter("all")}
@@ -141,7 +171,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <ProjectCard
               key={index}
@@ -149,16 +179,20 @@ const Projects: React.FC = () => {
               description={project.description}
               image={project.image}
               tags={project.tags}
+              slug={project.slug}
               animationDelay={`animate-delay-${(index + 1) * 100}`}
             />
           ))}
         </div>
         
         <div className="flex justify-center mt-16">
-          <button className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50">
-            <span>See More</span>
+          <Link 
+            to="/projects"
+            className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
+          >
+            <span>Unfold More</span>
             <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
