@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
+
 
 type Project = {
   id: number;
