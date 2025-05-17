@@ -100,7 +100,7 @@ const Header: React.FC = () => {
           </button>
           
           <button 
-            className="bg-[#6a0dad] clean-shine-button h-8 w-[72px] xs:w-[72px] sm:w-[84px] rounded-full hover:bg-opacity-80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] font-medium text-xs sm:text-sm text-white h-8"
+            className="bg-[#6a0dad] clean-shine-button h-8 w-[68px] xs:w-[72px] sm:w-[84px] rounded-full hover:bg-opacity-80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] font-medium text-xs sm:text-sm text-white h-8"
             onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})}
           >
             Contact
