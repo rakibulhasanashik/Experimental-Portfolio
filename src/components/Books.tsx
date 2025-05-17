@@ -1,8 +1,7 @@
 
 import React, { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Book } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
 
 interface BookCardProps {
   title: string;
@@ -35,13 +34,10 @@ const BookCard: React.FC<BookCardProps> = ({
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
           <div className="p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <Link 
-              to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
-              className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group"
-            >
+            <a href="#" className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group">
               View Book Details
               <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -59,13 +55,13 @@ const BookCard: React.FC<BookCardProps> = ({
             </span>
           ))}
         </div>
-        <Link 
-          to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
+        <a 
+          href={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
           className="inline-block px-5 py-2.5 border border-white/20 rounded-full hover:bg-portfolio-accent hover:border-portfolio-accent transition-all duration-500 flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
         >
           <span className="relative z-10">View Details</span>
           <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform relative z-10" />
-        </Link>
+        </a>
       </div>
     </div>
   );
@@ -102,49 +98,17 @@ const Books: React.FC = () => {
       image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
       tags: ["Philosophy", "Non-Fiction", "Psychology"],
       category: "philosophical"
-    },
-    // Additional books for the "show more" feature
-    {
-      title: "Quantum Reflections",
-      description: "An in-depth analysis of quantum physics principles and their implications for our understanding of reality.",
-      image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=800",
-      tags: ["Science", "Physics", "Research"],
-      category: "research"
-    },
-    {
-      title: "Whispers of Dawn",
-      description: "A breathtaking collection of poetry capturing the beauty of nature and the human experience.",
-      image: "https://images.unsplash.com/photo-1633477189729-9290b3261d0a?auto=format&fit=crop&q=80&w=800",
-      tags: ["Poetry", "Nature", "Literature"],
-      category: "poetry"
-    },
-    {
-      title: "Stellar Odyssey",
-      description: "An epic space adventure following the journey of explorers across the uncharted territories of our galaxy.",
-      image: "https://images.unsplash.com/photo-1605106702734-205df224ecce?auto=format&fit=crop&q=80&w=800",
-      tags: ["Fiction", "Space", "Adventure"],
-      category: "fiction"
-    },
-    {
-      title: "Mind Patterns",
-      description: "A groundbreaking study on cognitive patterns and their influence on decision-making processes.",
-      image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=800",
-      tags: ["Psychology", "Research", "Cognitive Science"],
-      category: "research"
     }
   ];
 
   const getFilteredBooks = () => {
-    const filtered = filter === "all" 
-      ? booksData 
-      : booksData.filter(book => book.category === filter);
-    
-    return filtered.slice(0, 4);
+    if (filter === "all") return booksData;
+    return booksData.filter(book => book.category === filter);
   };
-  
+
   return (
     <section className="py-24 relative" id="books">
-      <div className="content-container px-4 sm:px-6 lg:px-8">
+      <div className="content-container">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
           <span className="hero-title">BOOKS</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
@@ -189,7 +153,7 @@ const Books: React.FC = () => {
           </button>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {getFilteredBooks().map((book, index) => (
             <BookCard
               key={index}
@@ -201,43 +165,6 @@ const Books: React.FC = () => {
               className={`animate-delay-${(index + 1) * 100}`}
             />
           ))}
-        </div>
-        
-        
-        {/* Show More/Less Button - Only shown when there are filtered books */}
-        {getFilteredBooks().length < (filter === "all" ? booksData.length : booksData.filter(book => book.category === filter).length) && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(true)}
-              className="flex items-center space-x-2 bg-portfolio-muted px-6 py-3 rounded-full border border-white/10 hover:border-portfolio-accent/50 transition-all duration-300 group animate-pulse-soft"
-            >
-              <span>Show More</span>
-              <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </button>
-          </div>
-        )}
-        
-        {showAll && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(false)}
-              className="flex items-center space-x-2 bg-portfolio-muted px-6 py-3 rounded-full border border-white/10 hover:border-portfolio-accent/50 transition-all duration-300 group animate-pulse-soft"
-            >
-              <span>Show Less</span>
-              <ChevronDown className="w-4 h-4 rotate-180 group-hover:-translate-y-1 transition-transform" />
-            </button>
-          </div>
-        )}
-        
-        <div className="flex justify-center mt-10">
-          <Link 
-            to="/books"
-            className="social-button flex items-center space-x-2 animate-fade-in group animate-light-reflection"
-            className="social-button flex items-center space-x-2 animate-fade-in group animate-light-reflection hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
-          >
-            <span>Explore All</span>
-            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-          </Link>
         </div>
       </div>
     </section>
