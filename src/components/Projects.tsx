@@ -142,26 +142,26 @@ const Projects: React.FC<ProjectsProps> = ({
         </h2>
 
         {/* Category buttons with same style as Timeline section */}
-        <div className="flex flex-wrap justify-center gap-2">
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("all")}
-              >
-                All
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'exploration' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("exploration")}
-              >
-                Exploration
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'case-study' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("case-study")}
-              >
-                Case Study
-              </button>
-            </div>
+        <div className="flex space-x-4 mb-12 animate-fade-in">
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${activeTab === 'footprints' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setActiveTab("all")}
+          >
+            All
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${activeTab === 'academia' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setActiveTab("exploration")}
+          >
+            Exploration
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${activeTab === 'footprints' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setActiveTab("case-study")}
+          >
+            Case Study
+          </button>
+        </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
