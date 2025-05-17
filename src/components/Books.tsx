@@ -180,8 +180,7 @@ const Books: React.FC = () => {
                   View Details
                   <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </div>
-            </div>
+             </div>
           ))}
         </div>
         
