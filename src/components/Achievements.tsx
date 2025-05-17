@@ -62,42 +62,6 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
 };
 
 const Achievements: React.FC = () => {
-  // Achievement data
-  const achievementData = [
-    {
-      title: "FASHION DESIGN CHALLENGE",
-      subtitle: "Made design with fashion items elegantly crafted by Organizer Studio",
-      description: "Participated and won the fashion design challenge with innovative and elegant UI solutions that captivated judges and users alike.",
-      slug: "fashion-design-challenge",
-      category: "Design",
-      icon: <Award size={12} className="text-portfolio-accent" />
-    },
-    {
-      title: "PROPERTIES & TRAVEL APP",
-      subtitle: "Made designs with Properties & Travel app themes organized by Hot Onion",
-      description: "Created an award-winning travel application interface focusing on user experience and visual appeal that exceeded client expectations.",
-      slug: "properties-travel-app",
-      category: "Design",
-      icon: <Star size={12} className="text-portfolio-accent" />
-    },
-    {
-      title: "DESIGN INNOVATION AWARD",
-      subtitle: "Recognized for innovation in user interface design at the Global Design Awards",
-      description: "Received prestigious recognition for creating groundbreaking interfaces that push the boundaries of digital design aesthetics and functionality.",
-      slug: "design-innovation-award",
-      category: "Awards",
-      icon: <Trophy size={12} className="text-portfolio-accent" />
-    },
-    {
-      title: "MOBILE EXCELLENCE BADGE",
-      subtitle: "Top 10 mobile applications of the year by Design Federation",
-      description: "Application design was selected among thousands of submissions for exceptional mobile user experience and innovative interaction patterns.",
-      slug: "mobile-excellence-badge",
-      category: "Recognition",
-      icon: <Medal size={12} className="text-portfolio-accent" />
-    }
-  ];
-  
   return (
     <section className="py-24 relative overflow-hidden" id="achievements">
       <div className="content-container">
@@ -107,17 +71,38 @@ const Achievements: React.FC = () => {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {achievementData.map((achievement, index) => (
-            <AchievementCard
-              key={index}
-              title={achievement.title}
-              subtitle={achievement.subtitle}
-              description={achievement.description}
-              slug={achievement.slug}
-              className={`animate-fade-in animate-delay-${index * 100} hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700`}
-              icon={achievement.icon}
-            />
-          ))}
+          <AchievementCard
+            title="FASHION DESIGN CHALLENGE"
+            subtitle="Made design with fashion items elegantly crafted by Organizer Studio"
+            description="Participated and won the fashion design challenge with innovative and elegant UI solutions that captivated judges and users alike."
+            slug="fashion-design-challenge"
+            className="animate-fade-in hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700"
+            icon={<Award size={12} className="text-portfolio-accent" />}
+          />
+          <AchievementCard
+            title="PROPERTIES & TRAVEL APP"
+            subtitle="Made designs with Properties & Travel app themes organized by Hot Onion"
+            description="Created an award-winning travel application interface focusing on user experience and visual appeal that exceeded client expectations."
+            slug="properties-travel-app"
+            className="animate-fade-in animate-delay-100 hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700"
+            icon={<Star size={12} className="text-portfolio-accent" />}
+          />
+          <AchievementCard
+            title="DESIGN INNOVATION AWARD"
+            subtitle="Recognized for innovation in user interface design at the Global Design Awards"
+            description="Received prestigious recognition for creating groundbreaking interfaces that push the boundaries of digital design aesthetics and functionality."
+            slug="design-innovation-award"
+            className="animate-fade-in animate-delay-200 hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700"
+            icon={<Trophy size={12} className="text-portfolio-accent" />}
+          />
+          <AchievementCard
+            title="MOBILE EXCELLENCE BADGE"
+            subtitle="Top 10 mobile applications of the year by Design Federation"
+            description="Application design was selected among thousands of submissions for exceptional mobile user experience and innovative interaction patterns."
+            slug="mobile-excellence-badge"
+            className="animate-fade-in animate-delay-300 hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700"
+            icon={<Medal size={12} className="text-portfolio-accent" />}
+          />
         </div>
         
         <div className="flex justify-center mt-16">
