@@ -142,19 +142,26 @@ const Projects: React.FC<ProjectsProps> = ({
         </h2>
 
         {/* Category buttons with same style as Timeline section */}
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`tag px-4 py-2 transition-all duration-300 ${activeCategory === category ? 'bg-white text-black dark:bg-portfolio-accent dark:text-white' : 'hover:bg-white/10'}`}
+        <div className="flex flex-wrap justify-center gap-2">
+              <button 
+                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+                onClick={() => setFilter("all")}
               >
-                {category}
+                All
               </button>
-            ))}
-          </div>
-        </div>
+              <button 
+                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'exploration' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+                onClick={() => setFilter("exploration")}
+              >
+                Exploration
+              </button>
+              <button 
+                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'case-study' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+                onClick={() => setFilter("case-study")}
+              >
+                Case Study
+              </button>
+            </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
