@@ -1,7 +1,8 @@
-
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+// Assuming useTheme might be used here if needed// 
+import { useTheme } from "@/hooks/useTheme";
 
 type Project = {
   id: number;
@@ -148,17 +149,16 @@ const Projects: React.FC<ProjectsProps> = ({
             {categories.map((category) => (
               <button
                 key={category}
-                // Ensure the category value is lowercase 'all', 'exploration', 'case-study' for consistent filtering if needed later
+                // Pass the lowercase category value to the state setter
                 onClick={() => setActiveCategory(category)}
-                 // Using the button classes from ProjectsList.js
+                 // Using the button classes from ProjectsList.js and original dark mode
                 className={`tag px-4 py-2 transition-all duration-300 ${activeCategory === category ? 'bg-white text-black dark:bg-portfolio-accent dark:text-white' : 'hover:bg-white/10'}`}
               >
-                {category}
+                {category.charAt(0).toUpperCase() + category.slice(1)} {/* Display with initial cap */}
               </button>
             ))}
           </div>
-        </div>
-        
+        </div>      
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
