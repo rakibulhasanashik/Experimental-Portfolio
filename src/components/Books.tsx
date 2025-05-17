@@ -1,8 +1,6 @@
 
-import React from "react";
 import React, { useState } from "react";
 import { ArrowRight, Book } from "lucide-react";
-import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface BookCardProps {
@@ -167,31 +165,6 @@ const Books: React.FC = () => {
               className={`animate-delay-${(index + 1) * 100}`}
             />
           ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-<Link 
-                  to={`/book-details/${book.slug}`}
-                  className="inline-flex items-center text-sm font-medium text-portfolio-accent hover:text-white transition-colors group"
-                >
-                  View Details
-                  <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
-             </div>
-          ))}
-        </div>
-        
-        <div className="flex justify-center mt-16">
-          <Link 
-            to="/books"
-            className="social-button flex items-center space-x-2 animate-fade-in hover-effect group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
-          >
-            <span>Explore All</span>
-            <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-          </Link>
         </div>
       </div>
     </section>
