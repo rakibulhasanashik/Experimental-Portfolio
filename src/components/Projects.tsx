@@ -86,7 +86,7 @@ const Projects: React.FC<ProjectsProps> = ({
   activeCategory = "All", 
   setActiveCategory = () => {} 
 }) => {
-  const categories = ["All", "Web App", "Mobile", "Dashboard", "Social"];
+  const categories = ["All", "Exploration", "Case Study"];
   
   const projects: Project[] = [
     {
@@ -95,7 +95,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A fully functional e-commerce platform with user authentication, product catalog, shopping cart, and checkout process.",
       imageUrl: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "Node.js", "Express"],
-      category: "Web App",
+      category: "Case Study",
       slug: "ecommerce-platform"
     },
     {
@@ -104,7 +104,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A mobile application for managing tasks, setting reminders, and tracking progress.",
       imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vYmlsZSUyMGFwcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React Native", "Firebase"],
-      category: "Mobile",
+      category: "Exploration",
       slug: "mobile-task-manager"
     },
     {
@@ -113,7 +113,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A web-based dashboard for visualizing data from various sources, with interactive charts and graphs.",
       imageUrl: "https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRhc2hib2FyZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "D3.js", "GraphQL"],
-      category: "Dashboard",
+      category: "Case Study",
       slug: "data-visualization-dashboard"
     },
     {
@@ -122,7 +122,7 @@ const Projects: React.FC<ProjectsProps> = ({
       description: "A social media application for connecting with friends, sharing updates, and joining communities.",
       imageUrl: "https://images.unsplash.com/photo-1505051589839-6036ac548a68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNvY2lhbCUyMG1lZGlhfGVufDB8fDB8fHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       technologies: ["React", "Redux", "Firebase"],
-      category: "Social",
+      category: "Exploration",
       slug: "social-media-app"
     }
   ];
@@ -141,13 +141,16 @@ const Projects: React.FC<ProjectsProps> = ({
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
         </h2>
 
-        {/* Category buttons with same style as Timeline section */}
+                {/* Category buttons - Updated to match ProjectsList.js */}
         <div className="mb-12">
-          <div className="flex flex-wrap gap-4">
+          {/* Using the same flex container styles as ProjectsList.js */}
+          <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <button
                 key={category}
+                // Ensure the category value is lowercase 'all', 'exploration', 'case-study' for consistent filtering if needed later
                 onClick={() => setActiveCategory(category)}
+                 // Using the button classes from ProjectsList.js
                 className={`tag px-4 py-2 transition-all duration-300 ${activeCategory === category ? 'bg-white text-black dark:bg-portfolio-accent dark:text-white' : 'hover:bg-white/10'}`}
               >
                 {category}
@@ -155,6 +158,7 @@ const Projects: React.FC<ProjectsProps> = ({
             ))}
           </div>
         </div>
+        
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
