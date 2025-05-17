@@ -171,4 +171,18 @@ const Books: React.FC = () => {
   );
 };
 
+<div className="flex justify-center mt-10">
+          <Link 
+            to="/books"
+            className="social-button flex items-center space-x-2 animate-fade-in group"
+          >
+            <span>View All Books</span>
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default Books;
