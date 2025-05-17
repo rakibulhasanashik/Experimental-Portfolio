@@ -81,28 +81,28 @@ const Projects: React.FC = () => {
       description: "With this concept of the website you can see your stats during games when you are streaming and a lot of viewer stats.",
       image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&q=80&w=1000",
       tags: ["UI/UX", "Dashboard", "Gaming"],
-      category: "exploration"
+      category: "case-study"
     },
     {
       title: "Music Player App",
       description: "Ultra modern design | Modern concept which I experimented with different colors, clean design and neat layout.",
       image: "https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?auto=format&fit=crop&q=80&w=1000",
       tags: ["Mobile", "App Design", "Music"],
-      category: "case-study"
+      category: "exploration"
     },
     {
       title: "Task Management App",
       description: "Clean and minimalist task management mobile app design with user-friendly interface.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
       tags: ["Mobile", "UI Design", "Productivity"],
-      category: "exploration"
+      category: "case-study"
     },
     {
       title: "Real Estate Landing Page",
       description: "Custom landing page for real estate agency designed to boost conversion rates.",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000",
       tags: ["Web Design", "Landing Page", "Real Estate"],
-      category: "case-study"
+      category: "exploration"
     }
   ];
 
