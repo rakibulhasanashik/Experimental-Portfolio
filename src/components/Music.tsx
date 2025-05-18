@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRight, Play, Pause, Music as MusicIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -129,9 +129,36 @@ const Music: React.FC = () => {
     }
   ];
 
+  return (
+    <section className="py-24 relative" id="music">
+      <div className="absolute top-40 left-10 w-96 h-96 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
+      
+      <div className="content-container">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
+          <span className="hero-title">MUSIC</span>
+          <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
+        </h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {musicData.map((music, index) => (
+            <MusicCard
+              key={index}
+              title={music.title}
+              artist={music.artist}
+              coverImage={music.coverImage}
+              duration={music.duration}
+              category={music.category}
+              slug={music.slug}
+              animationDelay={`animate-delay-${(index + 1) * 100}`}
+            />
+          ))}
+        </div>
 
 
-const filteredMusic = filter === "all" 
+
+
+
+        const filteredMusic = filter === "all" 
     ? music 
     : music.filter(m => m.genre.toLowerCase().replace(" & ", "-").replace(" ", "-") === filter);
 
@@ -190,32 +217,9 @@ const filteredMusic = filter === "all"
           </div>
 
 
-  
 
-  return (
-    <section className="py-24 relative" id="music">
-      <div className="absolute top-40 left-10 w-96 h-96 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
-      
-      <div className="content-container">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
-          <span className="hero-title">MUSIC</span>
-          <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
-        </h2>
+
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {musicData.map((music, index) => (
-            <MusicCard
-              key={index}
-              title={music.title}
-              artist={music.artist}
-              coverImage={music.coverImage}
-              duration={music.duration}
-              category={music.category}
-              slug={music.slug}
-              animationDelay={`animate-delay-${(index + 1) * 100}`}
-            />
-          ))}
-        </div>
         
         <div className="flex justify-center mt-16">
           <Link 
