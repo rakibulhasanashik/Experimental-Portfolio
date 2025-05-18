@@ -34,7 +34,7 @@ const Hero = () => {
 
   const socialLinks = [
     { href: "https://www.linkedin.com/in/abid-hasan-sarder", icon: <Linkedin size={14} />, label: "LinkedIn" },
-    { href: "https://github.com", icon: <Github size={14} />, label: "GitHub" },
+    { href: "https://github.com/abidhasansarder", icon: <Github size={14} />, label: "GitHub" },
     { href: "https://www.instagram.com/abid_hasan_sarder", icon: <Instagram size={14} />, label: "Instagram" },
     { href: "https://www.facebook.com/profile.php?id=100000655539896", icon: <Facebook size={14} />, label: "Facebook" },
     { 
@@ -57,7 +57,7 @@ const Hero = () => {
       ), 
       label: "Goodreads" 
     },
-    { href: "https://twitter.com", icon: <Twitter size={14} />, label: "Twitter" },
+    { href: "https://x.com/abidhasansarder", icon: <Twitter/X size={14} />, label: "Twitter" },
     { 
       href: "https://amazon.com/author/abid_hasan_sarder", 
       icon: (
