@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
-import { ArrowRight, Book } from "lucide-react";
+import { ArrowRight, Book, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface BookCardProps {
   title: string;
@@ -34,10 +35,13 @@ const BookCard: React.FC<BookCardProps> = ({
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
           <div className="p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <a href="#" className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group">
+            <Link 
+              to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
+              className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group"
+            >
               View Book Details
               <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -55,13 +59,13 @@ const BookCard: React.FC<BookCardProps> = ({
             </span>
           ))}
         </div>
-        <a 
-          href={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
+        <Link 
+          to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
           className="inline-block px-5 py-2.5 border border-white/20 rounded-full hover:bg-portfolio-accent hover:border-portfolio-accent transition-all duration-500 flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
         >
           <span className="relative z-10">View Details</span>
           <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform relative z-10" />
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -69,6 +73,7 @@ const BookCard: React.FC<BookCardProps> = ({
 
 const Books: React.FC = () => {
   const [filter, setFilter] = useState("all");
+  const [showAll, setShowAll] = useState(false);
   
   const booksData = [
     {
@@ -98,17 +103,20 @@ const Books: React.FC = () => {
       image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
       tags: ["Philosophy", "Non-Fiction", "Psychology"],
       category: "philosophical"
-    }
-  ];
+    },
 
   const getFilteredBooks = () => {
-    if (filter === "all") return booksData;
-    return booksData.filter(book => book.category === filter);
+    const filtered = filter === "all" 
+      ? booksData 
+      : booksData.filter(book => book.category === filter);
+    
+    return showAll ? filtered : filtered.slice(0, 4);
   };
-
+  
+  
   return (
     <section className="py-24 relative" id="books">
-      <div className="content-container">
+      <div className="content-container px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
           <span className="hero-title">BOOKS</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
@@ -153,7 +161,7 @@ const Books: React.FC = () => {
           </button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {getFilteredBooks().map((book, index) => (
             <BookCard
               key={index}
@@ -165,6 +173,16 @@ const Books: React.FC = () => {
               className={`animate-delay-${(index + 1) * 100}`}
             />
           ))}
+        </div>
+                      
+        <div className="flex justify-center mt-10">
+          <Link 
+            to="/books"
+            className="social-button flex items-center space-x-2 animate-fade-in group"
+          >
+            <span>View All Books</span>
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>
