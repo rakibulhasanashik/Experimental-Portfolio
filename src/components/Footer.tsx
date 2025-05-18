@@ -100,24 +100,28 @@ const Footer: React.FC = () => {
           </div>
 
           <footer className="relative bg-black text-white py-8 px-6 md:px-12">
-          <div className="pb-16">
-          <div className="flex flex-col md:flex-row items-center gap-8 mt-4 md:mt-0">
-            <div className="flex space-x-6">
-              <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">Privacy Policy</Link>
-              <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">Terms of Service</Link>
-            </div>
-            
-            <button 
-              onClick={scrollToTop} 
-              className="absolute bottom-4 right-4 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={18} className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
-            </button>
-          </div>
-        </div>
+  {/* Add padding-bottom to prevent overlap with the button */}
+  <div className="pb-16">
+    <div className="flex flex-col md:flex-row items-center gap-8 mt-4 md:mt-0">
+      <div className="flex space-x-6">
+        <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">
+          Privacy Policy
+        </Link>
+        <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">
+          Terms of Service
+        </Link>
       </div>
-    </footer>
+    </div>
+  </div>
+
+  <button 
+    onClick={scrollToTop} 
+    className="absolute bottom-4 right-4 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
+    aria-label="Scroll to top"
+  >
+    <ArrowUp size={18} className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
+  </button>
+</footer>
   );
 };
 
