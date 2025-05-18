@@ -70,7 +70,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="min-h-[56vh] flex flex-col justify-center relative py-2" id="home">
+    <section className="min-h-[56vh] flex flex-col justify-center relative py-0" id="home">
       <div className="content-container z-10 relative">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-6">
