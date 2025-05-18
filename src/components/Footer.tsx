@@ -105,17 +105,16 @@ const Footer: React.FC = () => {
               <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">Terms of Service</Link>
             </div>
             
+              {/* Scroll to Top Button - fixed bottom right */}
             <button 
               onClick={scrollToTop} 
-              className="p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
+              className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
               aria-label="Scroll to top"
             >
-              <ArrowUp size={18} className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </footer>
+              <ArrowUp size={18} 
+         className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
+        </button>
+     </footer>
   );
 };
 
