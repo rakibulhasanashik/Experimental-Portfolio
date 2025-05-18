@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
             
             <button 
               onClick={scrollToTop} 
-              className="fixed bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
+              className="absolute bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
               aria-label="Scroll to top"
             >
               <ArrowUp size={18} className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
