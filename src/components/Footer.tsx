@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="relative bg-black text-white py-8 px-6 md:px-12">
-          <div className="pb-6"> {/* Add padding-bottom here */}
+          <div className="pb-16">
           <div className="flex flex-col md:flex-row items-center gap-8 mt-4 md:mt-0">
             <div className="flex space-x-6">
               <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">Privacy Policy</Link>
