@@ -205,19 +205,6 @@ const Books: React.FC = () => {
           ))}
         </div>
         
-        {/* Show More/Less Button */}
-        {getFilteredBooks().length < (filter === "all" ? booksData.length : booksData.filter(book => book.category === filter).length) && (
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(true)}
-              className="flex items-center space-x-2 bg-portfolio-muted px-6 py-3 rounded-full border border-white/10 hover:border-portfolio-accent/50 transition-all duration-300 group animate-pulse-soft"
-            >
-              <span>Show More</span>
-              <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </button>
-          </div>
-        )}
-        
         {showAll && (
           <div className="flex justify-center mt-10">
             <button
