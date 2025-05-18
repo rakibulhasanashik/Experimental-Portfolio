@@ -117,22 +117,6 @@ const Projects: React.FC = () => {
       tags: ["Web Design", "Landing Page", "Real Estate"],
       category: "case-study",
       slug: "real-estate-landing-page"
-    },
-    {
-      title: "Financial Analytics Platform",
-      description: "Comprehensive financial data visualization and analytics dashboard for enterprise users.",
-      image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1000",
-      tags: ["UI/UX", "Dashboard", "Analytics"],
-      category: "case-study",
-      slug: "financial-analytics-platform"
-    },
-    {
-      title: "E-Commerce Mobile App",
-      description: "Feature-rich shopping application with seamless checkout flow and personalized recommendations.",
-      image: "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&q=80&w=1000",
-      tags: ["Mobile", "E-Commerce", "App Design"],
-      category: "exploration",
-      slug: "ecommerce-mobile-app"
     }
   ];
 
