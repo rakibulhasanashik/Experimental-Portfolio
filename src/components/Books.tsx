@@ -1,117 +1,242 @@
+
 import React, { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Book, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
-interface BooksProps {
-  activeCategory: string;
-  setActiveCategory: (category: string) => void;
-  sectionTitle: string;
+interface BookCardProps {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  category: string;
+  className?: string;
 }
 
-const Books: React.FC<BooksProps> = ({ activeCategory, setActiveCategory, sectionTitle }) => {
-  const categories = ["All", "Research", "Literature", "Poetry", "Philosophy", "Psychology", "Fiction", "Non-Fiction"];
+const BookCard: React.FC<BookCardProps> = ({
+  title,
+  description,
+  image,
+  tags,
+  className,
+}) => {
+  return (
+    <div className={cn(
+      "project-card card-hover animate-fade-in glow-effect backdrop-blur-sm bg-gradient-to-br from-[#1f1f1f]/80 to-[#0f0f0f]/90 border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 rounded-xl overflow-hidden", 
+      className
+    )}>
+      <div className="relative group overflow-hidden rounded-t-xl">
+        <div className="aspect-[2/3] overflow-hidden">
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
+          <div className="p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <Link 
+              to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
+              className="text-sm font-medium flex items-center text-white hover:text-portfolio-accent transition-colors group"
+            >
+              View Book Details
+              <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-6 relative z-10">
+        <h3 className="text-2xl font-bold mb-2 hover:text-portfolio-accent transition-colors duration-300">{title}</h3>
+        <p className="text-portfolio-text-muted mb-5">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tags.map((tag, index) => (
+            <span 
+              key={index} 
+              className="tag bg-black/30 hover:bg-portfolio-accent/20 transition-all duration-300 transform hover:scale-105"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <Link 
+          to={`/book-details/${title.toLowerCase().replace(/\s+/g, '-')}`}
+          className="inline-block px-5 py-2.5 border border-white/20 rounded-full hover:bg-portfolio-accent hover:border-portfolio-accent transition-all duration-500 flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
+        >
+          <span className="relative z-10">View Details</span>
+          <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform relative z-10" />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const Books: React.FC = () => {
+  const [filter, setFilter] = useState("all");
+  const [showAll, setShowAll] = useState(false);
   
   const booksData = [
     {
-      title: "The Psychology of Money",
-      author: "Morgan Housel",
-      category: "Psychology",
-      coverUrl: "https://images-na.ssl-images-amazon.com/images/I/71F+5mKHEUL._AC_UL600_SR600,400_.jpg",
-      slug: "psychology-of-money"
+      title: "The Digital Mind",
+      description: "A comprehensive exploration of artificial intelligence and its impact on human cognition and society.",
+      image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800",
+      tags: ["Non-Fiction", "Technology", "AI"],
+      category: "research"
     },
     {
-      title: "The Silent Patient",
-      author: "Alex Michaelides",
-      category: "Fiction",
-      coverUrl: "https://images-na.ssl-images-amazon.com/images/I/81hyQNu8PnL._AC_UL600_SR600,400_.jpg",
-      slug: "silent-patient"
+      title: "Echoes of Silence",
+      description: "A collection of poems exploring themes of solitude, reflection, and the human condition in modern society.",
+      image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800",
+      tags: ["Poetry", "Literature", "Art"],
+      category: "poetry"
     },
     {
-      title: "Sapiens: A Brief History of Humankind",
-      author: "Yuval Noah Harari",
-      category: "Philosophy",
-      coverUrl: "https://images-na.ssl-images-amazon.com/images/I/71HMshrT3lL._AC_UL600_SR600,400_.jpg",
-      slug: "sapiens"
+      title: "Beyond the Horizon",
+      description: "A science fiction novel set in a distant future where humanity faces its greatest challenge yet.",
+      image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&q=80&w=800",
+      tags: ["Fiction", "Sci-Fi", "Adventure"],
+      category: "fiction"
     },
     {
-      title: "Atomic Habits",
-      author: "James Clear",
-      category: "Non-Fiction",
-      coverUrl: "https://images-na.ssl-images-amazon.com/images/I/81bGKUa1e0L._AC_UL600_SR600,400_.jpg",
-      slug: "atomic-habits"
+      title: "The Art of Being",
+      description: "A philosophical exploration of consciousness, existence, and finding meaning in a complex world.",
+      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
+      tags: ["Philosophy", "Non-Fiction", "Psychology"],
+      category: "philosophical"
+    },
+    // Additional books for the "show more" feature
+    {
+      title: "Quantum Reflections",
+      description: "An in-depth analysis of quantum physics principles and their implications for our understanding of reality.",
+      image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=800",
+      tags: ["Science", "Physics", "Research"],
+      category: "research"
+    },
+    {
+      title: "Whispers of Dawn",
+      description: "A breathtaking collection of poetry capturing the beauty of nature and the human experience.",
+      image: "https://images.unsplash.com/photo-1633477189729-9290b3261d0a?auto=format&fit=crop&q=80&w=800",
+      tags: ["Poetry", "Nature", "Literature"],
+      category: "poetry"
+    },
+    {
+      title: "Stellar Odyssey",
+      description: "An epic space adventure following the journey of explorers across the uncharted territories of our galaxy.",
+      image: "https://images.unsplash.com/photo-1605106702734-205df224ecce?auto=format&fit=crop&q=80&w=800",
+      tags: ["Fiction", "Space", "Adventure"],
+      category: "fiction"
+    },
+    {
+      title: "Mind Patterns",
+      description: "A groundbreaking study on cognitive patterns and their influence on decision-making processes.",
+      image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=800",
+      tags: ["Psychology", "Research", "Cognitive Science"],
+      category: "research"
     }
   ];
 
-  const filteredBooks = activeCategory === "All" 
-    ? booksData 
-    : booksData.filter(book => book.category === activeCategory);
-
+  const getFilteredBooks = () => {
+    const filtered = filter === "all" 
+      ? booksData 
+      : booksData.filter(book => book.category === filter);
+    
+    return showAll ? filtered : filtered.slice(0, 4);
+  };
+  
+  
   return (
     <section className="py-24 relative" id="books">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
-      
-      <div className="content-container">
+      <div className="content-container px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
-          <span className="hero-title">{sectionTitle}</span>
+          <span className="hero-title">BOOKS</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
         </h2>
-
-        {/* Add categories for books */}
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`tag ${activeCategory === category ? "bg-white text-black dark:bg-portfolio-accent dark:text-white" : ""}`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+        
+        <div className="flex flex-wrap gap-4 mb-12 animate-fade-in">
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'research' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("research")}
+          >
+            Research
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'poetry' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("poetry")}
+          >
+            Literature & Poetry
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'fiction' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("fiction")}
+          >
+            Fiction
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'non-fiction' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("non-fiction")}
+          >
+            Non-Fiction
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("philosophical")}
+          >
+            Philosophical
+          </button>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredBooks.map((book, index) => (
-            <div 
-              key={index} 
-              className="bg-gradient-to-br from-[#252525]/90 to-[#151515]/95 rounded-xl p-6 animate-fade-in hover:shadow-[0_15px_30px_rgba(139,92,246,0.2)] transition-all duration-500 border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm transform hover:scale-[1.02] group light:from-white/90 light:to-gray-100/95 light:border-black/5"
-            >
-              <div className="mb-4">
-                <span className="text-xs font-medium text-portfolio-accent bg-portfolio-accent/10 px-3 py-1 rounded-full">
-                  {book.category}
-                </span>
-              </div>
-              
-              <div className="relative mb-6 aspect-[2/3] overflow-hidden rounded-lg">
-                <img 
-                  src={book.coverUrl} 
-                  alt={book.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              <h3 className="text-xl font-bold mb-1 group-hover:text-portfolio-accent transition-colors duration-300">{book.title}</h3>
-              <p className="text-portfolio-text-muted mb-4 text-sm">{book.author}</p>
-              
-              <Link 
-                to={`/book-details/${book.slug}`}
-                className="inline-flex items-center text-sm font-medium text-portfolio-accent hover:text-white transition-colors group light:hover:text-black"
-              >
-                Read More
-                <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          {getFilteredBooks().map((book, index) => (
+            <BookCard
+              key={index}
+              title={book.title}
+              description={book.description}
+              image={book.image}
+              tags={book.tags}
+              category={book.category}
+              className={`animate-delay-${(index + 1) * 100}`}
+            />
           ))}
         </div>
         
-        <div className="flex justify-center mt-16">
+        {/* Show More/Less Button */}
+        {getFilteredBooks().length < (filter === "all" ? booksData.length : booksData.filter(book => book.category === filter).length) && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(true)}
+              className="flex items-center space-x-2 bg-portfolio-muted px-6 py-3 rounded-full border border-white/10 hover:border-portfolio-accent/50 transition-all duration-300 group animate-pulse-soft"
+            >
+              <span>Show More</span>
+              <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+            </button>
+          </div>
+        )}
+        
+        {showAll && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(false)}
+              className="flex items-center space-x-2 bg-portfolio-muted px-6 py-3 rounded-full border border-white/10 hover:border-portfolio-accent/50 transition-all duration-300 group animate-pulse-soft"
+            >
+              <span>Show Less</span>
+              <ChevronDown className="w-4 h-4 rotate-180 group-hover:-translate-y-1 transition-transform" />
+            </button>
+          </div>
+        )}
+        
+        <div className="flex justify-center mt-10">
           <Link 
             to="/books"
-            className="social-button flex items-center space-x-2 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+            className="social-button flex items-center space-x-2 animate-fade-in group"
           >
             <span>View All Books</span>
-            <ArrowRight size={16} className="ml-1 transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
