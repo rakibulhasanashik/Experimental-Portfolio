@@ -38,9 +38,9 @@ const Footer: React.FC = () => {
           
           <div className="col-span-1">
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <p className="text-portfolio-text-muted mb-2">hello@yourname.com</p>
+            <p className="text-portfolio-text-muted mb-2">hello@abidhasansarder.com</p>
             <a 
-              href="mailto:hello@yourname.com" 
+              href="mailto:hello@abidhasansarder.com" 
               className="inline-block text-portfolio-accent hover:underline"
             >
               Send me an email
