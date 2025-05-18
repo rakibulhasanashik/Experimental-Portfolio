@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Linkedin, Github, Instagram, Facebook, Youtube, Music, Twitter, BookOpen, Calendar } from "lucide-react";
+import { Linkedin, Github, Instagram, Facebook, Youtube, Music, X, BookOpen, Calendar } from "lucide-react";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -57,7 +57,7 @@ const Hero = () => {
       ), 
       label: "Goodreads" 
     },
-    { href: "https://x.com/abidhasansarder", icon: <Twitter size={14} />, label: "Twitter" },
+    { href: "https://x.com/abidhasansarder", icon: <X size={14} />, label: "X" },
     { 
       href: "https://amazon.com/author/abid_hasan_sarder", 
       icon: (
