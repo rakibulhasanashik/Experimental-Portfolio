@@ -100,8 +100,7 @@ const Footer: React.FC = () => {
           </div>
 
           <footer className="relative bg-black text-white py-8 px-6 md:px-12">
-          <div className="pb-16"> 
-                 {/* Add padding-bottom here */}
+          <div className="pb-6"> {/* Add padding-bottom here */}
           <div className="flex flex-col md:flex-row items-center gap-8 mt-4 md:mt-0">
             <div className="flex space-x-6">
               <Link to="#" className="text-portfolio-text-muted hover:text-white text-sm transition-colors underline-effect">Privacy Policy</Link>
@@ -110,7 +109,7 @@ const Footer: React.FC = () => {
             
             <button 
               onClick={scrollToTop} 
-              className="absolute bottom-6 right-6 z-50 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
+              className="absolute bottom-4 right-4 p-3 rounded-full border border-white/20 hover:bg-white/10 hover:border-portfolio-accent transition-all duration-300 group"
               aria-label="Scroll to top"
             >
               <ArrowUp size={18} className="text-portfolio-text-muted group-hover:text-portfolio-accent transition-colors" />
