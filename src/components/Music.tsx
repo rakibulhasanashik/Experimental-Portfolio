@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ArrowRight, Play, Pause, Music as MusicIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
@@ -153,65 +153,7 @@ const Music: React.FC = () => {
             />
           ))}
         </div>
-
-        const filteredMusic = filter === "all" 
-    ? music 
-    : music.filter(m => m.genre.toLowerCase().replace(" & ", "-").replace(" ", "-") === filter);
-
-  return (
-    <div className={`${theme === 'dark' ? 'dark' : 'light'} bg-portfolio-bg min-h-screen transition-colors duration-500 ${isChanging ? 'animate-theme-transition' : ''}`}>
-      <Header />
-      
-      <div className={`pt-32 pb-20 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0 transform translate-y-10"}`}>
-        <div className="content-container">
-          <div className="mb-12 flex flex-col items-center">
-            <h1 className="hero-title text-5xl md:text-6xl font-black text-center mb-6">
-              ALL MUSIC
-            </h1>
-            <p className="text-portfolio-text-muted max-w-2xl text-center mb-8">
-              Explore my complete collection of music across various genres.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-2">
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'all' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("all")}
-              >
-                All
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'electronic' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("electronic")}
-              >
-                Electronic
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'ambient' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("ambient")}
-              >
-                Ambient
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'jazz' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("jazz")}
-              >
-                Jazz
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'classical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("classical")}
-              >
-                Classical
-              </button>
-              <button 
-                className={`tag px-4 py-2 transition-all duration-300 ${filter === 'rock' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-                onClick={() => setFilter("rock")}
-              >
-                Rock
-              </button>
-            </div>
-          </div>
-                
+        
         <div className="flex justify-center mt-16">
           <Link 
             to="/music"
