@@ -102,7 +102,7 @@ const Books: React.FC = () => {
       description: "A philosophical exploration of consciousness, existence, and finding meaning in a complex world.",
       image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
       tags: ["Philosophy", "Non-Fiction", "Psychology"],
-      category: "philosophical"
+      category: "philosophy"
     }
   ];
 
@@ -138,9 +138,15 @@ const Books: React.FC = () => {
           </button>
           <button 
             className={`tag px-4 py-2 transition-all duration-300 ${filter === 'poetry' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("literature")}
+          >
+            Literature
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'poetry' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
             onClick={() => setFilter("poetry")}
           >
-            Literature & Poetry
+            Poetry
           </button>
           <button 
             className={`tag px-4 py-2 transition-all duration-300 ${filter === 'fiction' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
@@ -156,9 +162,15 @@ const Books: React.FC = () => {
           </button>
           <button 
             className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
-            onClick={() => setFilter("philosophical")}
+            onClick={() => setFilter("philosophy")}
           >
-            Philosophical
+            Philosophy
+          </button>
+          <button 
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            onClick={() => setFilter("psychology")}
+          >
+            Psychology
           </button>
         </div>
         
