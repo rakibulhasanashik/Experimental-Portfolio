@@ -137,7 +137,7 @@ const Books: React.FC = () => {
             Research
           </button>
           <button 
-            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'poetry' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'literature' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
             onClick={() => setFilter("literature")}
           >
             Literature
@@ -161,13 +161,13 @@ const Books: React.FC = () => {
             Non-Fiction
           </button>
           <button 
-            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophy' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
             onClick={() => setFilter("philosophy")}
           >
             Philosophy
           </button>
           <button 
-            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'philosophical' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+            className={`tag px-4 py-2 transition-all duration-300 ${filter === 'psychology' ? 'bg-white text-black' : 'hover:bg-white/10'}`}
             onClick={() => setFilter("psychology")}
           >
             Psychology
