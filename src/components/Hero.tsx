@@ -57,7 +57,7 @@ const Hero = () => {
       ), 
       label: "Goodreads" 
     },
-    { href: "https://x.com/abidhasansarder", icon: <Twitter (X) size={14} />, label: "Twitter" },
+    { href: "https://x.com/abidhasansarder", icon: <Twitter size={14} />, label: "Twitter" },
     { 
       href: "https://amazon.com/author/abid_hasan_sarder", 
       icon: (
