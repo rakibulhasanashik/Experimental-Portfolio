@@ -45,7 +45,7 @@ const Contact = () => {
   };
 
   const sendEmail = () => {
-    window.location.href = "mailto:contact@example.com?subject=Inquiry from Website";
+    window.location.href = "mailto:hello@abidhasansarder.com?subject=Inquiry from Website";
   };
   
   return (
