@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10">
           <div>
             <p className="text-portfolio-text-muted text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Abid Hasan Sarder. All rights reserved.
             </p>
           </div>
           
