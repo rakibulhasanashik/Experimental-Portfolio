@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 <Music size={14} />
                 <span className="text-xs">Spotify</span>
               </a>
-              <a href="https://goodreads.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-full hover:bg-portfolio-accent/20 transition-all duration-300">
+              <a href="https://www.goodreads.com/author/show/40122953.Abid_Hasan_Sarder" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-full hover:bg-portfolio-accent/20 transition-all duration-300">
                 <BookOpen size={14} />
                 <span className="text-xs">Goodreads</span>
               </a>
