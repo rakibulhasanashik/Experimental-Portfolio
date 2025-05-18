@@ -103,35 +103,6 @@ const Books: React.FC = () => {
       image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
       tags: ["Philosophy", "Non-Fiction", "Psychology"],
       category: "philosophical"
-    },
-    // Additional books for the "show more" feature
-    {
-      title: "Quantum Reflections",
-      description: "An in-depth analysis of quantum physics principles and their implications for our understanding of reality.",
-      image: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&q=80&w=800",
-      tags: ["Science", "Physics", "Research"],
-      category: "research"
-    },
-    {
-      title: "Whispers of Dawn",
-      description: "A breathtaking collection of poetry capturing the beauty of nature and the human experience.",
-      image: "https://images.unsplash.com/photo-1633477189729-9290b3261d0a?auto=format&fit=crop&q=80&w=800",
-      tags: ["Poetry", "Nature", "Literature"],
-      category: "poetry"
-    },
-    {
-      title: "Stellar Odyssey",
-      description: "An epic space adventure following the journey of explorers across the uncharted territories of our galaxy.",
-      image: "https://images.unsplash.com/photo-1605106702734-205df224ecce?auto=format&fit=crop&q=80&w=800",
-      tags: ["Fiction", "Space", "Adventure"],
-      category: "fiction"
-    },
-    {
-      title: "Mind Patterns",
-      description: "A groundbreaking study on cognitive patterns and their influence on decision-making processes.",
-      image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=800",
-      tags: ["Psychology", "Research", "Cognitive Science"],
-      category: "research"
     }
   ];
 
@@ -222,7 +193,7 @@ const Books: React.FC = () => {
             to="/books"
             className="social-button flex items-center space-x-2 animate-fade-in group"
           >
-            <span>View All Books</span>
+            <span>Explore All</span>
             <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
