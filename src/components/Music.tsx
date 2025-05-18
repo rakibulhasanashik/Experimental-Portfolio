@@ -129,6 +129,10 @@ const Music: React.FC = () => {
     }
   ];
 
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories = Array.from(new Set(musicData.map(item => item.category)));
+
   return (
     <section className="py-24 relative" id="music">
       <div className="absolute top-40 left-10 w-96 h-96 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
@@ -138,9 +142,29 @@ const Music: React.FC = () => {
           <span className="hero-title">MUSIC</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
         </h2>
+
+        <div className="flex flex-wrap gap-3 mb-10">
+  <button
+    onClick={() => setSelectedCategory(null)}
+    className={`px-4 py-2 rounded-full border ${selectedCategory === null ? 'bg-portfolio-accent text-white' : 'bg-transparent text-white border-white/20'} transition-all`}
+  >
+    All
+  </button>
+  {categories.map((category) => (
+    <button
+      key={category}
+      onClick={() => setSelectedCategory(category)}
+      className={`px-4 py-2 rounded-full border ${selectedCategory === category ? 'bg-portfolio-accent text-white' : 'bg-transparent text-white border-white/20'} transition-all`}
+    >
+      {category}
+    </button>
+  ))}
+</div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {musicData.map((music, index) => (
+          {musicData
+  .filter(music => !selectedCategory || music.category === selectedCategory)
+  .map((music, index) => (
             <MusicCard
               key={index}
               title={music.title}
