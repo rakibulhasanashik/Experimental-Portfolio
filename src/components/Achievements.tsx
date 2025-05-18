@@ -23,35 +23,35 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
 }) => {
   return (
     <div className={cn(
-      "bg-gradient-to-br from-[#1f1f1f]/80 to-[#0f0f0f]/90 p-4 rounded-xl animate-fade-in card-hover border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm relative overflow-hidden group", 
+      "bg-gradient-to-br from-[#1f1f1f]/80 to-[#0f0f0f]/90 p-8 rounded-xl animate-fade-in card-hover border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm relative overflow-hidden group", 
       className
     )}>
-      <div className="mb-3 flex justify-between items-center relative z-5">
-        <span className="text-xs px-1.5 py-1 bg-black/50 backdrop-blur-sm rounded-full flex items-center gap-1.5 border border-white/10 group-hover:border-portfolio-accent/30 transition-all duration-300">
+      <div className="mb-6 flex justify-between items-center relative z-10">
+        <span className="text-xs px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full flex items-center gap-1.5 border border-white/10 group-hover:border-portfolio-accent/30 transition-all duration-300">
           {icon || <Award size={12} className="text-portfolio-accent" />}
           <span className="group-hover:text-white transition-colors duration-300">Design Challenge</span>
         </span>
         <div className="flex items-center gap-1">
-          <Star size={7} className="text-yellow-500 fill-yellow-500 animate-pulse-soft" />
-          <Star size={7} className="text-yellow-500 fill-yellow-500 animate-pulse-soft animate-delay-100" />
-          <Star size={7} className="text-yellow-500 fill-yellow-500 animate-pulse-soft animate-delay-200" />
+          <Star size={14} className="text-yellow-500 fill-yellow-500 animate-pulse-soft" />
+          <Star size={14} className="text-yellow-500 fill-yellow-500 animate-pulse-soft animate-delay-100" />
+          <Star size={14} className="text-yellow-500 fill-yellow-500 animate-pulse-soft animate-delay-200" />
         </div>
       </div>
       
-      <h3 className="text-1xl font-bold mb-1 group-hover:text-portfolio-accent transition-colors duration-300 relative">
+      <h3 className="text-2xl font-bold mb-2 group-hover:text-portfolio-accent transition-colors duration-300 relative">
         {title}
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-portfolio-accent group-hover:w-1/3 transition-all duration-500 ease-out"></span>
       </h3>
       
-      <p className="text-sm text-portfolio-text-muted mb-3 group-hover:text-white/80 transition-colors duration-300">{subtitle}</p>
+      <p className="text-sm text-portfolio-text-muted mb-6 group-hover:text-white/80 transition-colors duration-300">{subtitle}</p>
       
-      <p className="text-portfolio-text-muted mb-4 relative z-5 group-hover:text-white/70 transition-colors duration-300">{description}</p>
+      <p className="text-portfolio-text-muted mb-8 relative z-10 group-hover:text-white/70 transition-colors duration-300">{description}</p>
       
       <Link 
         to={`/achievement-detail/${slug}`}
-        className="inline-block px-2.5 py-1.5 border border-white/20 rounded-full group-hover:bg-portfolio-accent group-hover:border-portfolio-accent transition-all duration-500 group flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
+        className="inline-block px-5 py-2.5 border border-white/20 rounded-full group-hover:bg-portfolio-accent group-hover:border-portfolio-accent transition-all duration-500 group flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
       >
-        <span className="relative z-5">Full Insight</span>
+        <span className="relative z-10">Full Insight</span>
         <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform relative z-10" />
         
         {/* Glow effect on hover */}
@@ -63,9 +63,9 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
 
 const Achievements: React.FC = () => {
   return (
-    <section className="py-12 relative overflow-hidden" id="achievements">
+    <section className="py-24 relative overflow-hidden" id="achievements">
       <div className="content-container">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in relative inline-block">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 animate-fade-in relative inline-block">
           <span className="hero-title">ACHIEVEMENTS</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
         </h2>
@@ -111,7 +111,7 @@ const Achievements: React.FC = () => {
             className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
           >
             <span>Unfold More</span>
-            <ArrowRight size={8} className="transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
