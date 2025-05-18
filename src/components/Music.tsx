@@ -154,10 +154,6 @@ const Music: React.FC = () => {
           ))}
         </div>
 
-
-
-
-
         const filteredMusic = filter === "all" 
     ? music 
     : music.filter(m => m.genre.toLowerCase().replace(" & ", "-").replace(" ", "-") === filter);
@@ -215,12 +211,7 @@ const Music: React.FC = () => {
               </button>
             </div>
           </div>
-
-
-
-
-        
-        
+                
         <div className="flex justify-center mt-16">
           <Link 
             to="/music"
