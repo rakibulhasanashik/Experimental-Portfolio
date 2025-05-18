@@ -1,8 +1,7 @@
-
 import React, { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { Link } from "react-router-dom"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils"
 import MusicCard from "./MusicCard"
 
 const Music: React.FC = () => {
@@ -68,16 +67,16 @@ const Music: React.FC = () => {
         </h2>
 
         {/* Category Buttons */}
-        <div className="flex flex-wrap gap-3 justify-center mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={cn(
-                "px-4 py-2 rounded-full border border-portfolio-accent text-sm font-medium transition-all",
+                "transition-all px-5 py-2 text-sm rounded-full font-medium border duration-200 ease-in-out",
                 selectedCategory === cat
-                  ? "bg-portfolio-accent text-white"
-                  : "text-portfolio-accent hover:bg-portfolio-accent/20"
+                  ? "bg-portfolio-accent text-white border-portfolio-accent shadow-md scale-105"
+                  : "text-portfolio-accent border-portfolio-accent/30 hover:bg-portfolio-accent/10 hover:scale-105"
               )}
             >
               {cat}
@@ -85,7 +84,7 @@ const Music: React.FC = () => {
           ))}
         </div>
 
-        {/* Music Grid */}
+        {/* Music Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredMusic.map((music, index) => (
             <MusicCard
@@ -101,13 +100,17 @@ const Music: React.FC = () => {
           ))}
         </div>
 
+        {/* View More Button */}
         <div className="flex justify-center mt-16">
           <Link
             to="/music"
-            className="social-button flex items-center space-x-2 animate-fade-in group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
+            className="social-button flex items-center space-x-2 px-6 py-2 border border-portfolio-accent rounded-full text-portfolio-accent transition-all duration-300 hover:bg-portfolio-accent/10 group"
           >
-            <span>Unfold More</span>
-            <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+            <span className="group-hover:underline">Unfold More</span>
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 transform group-hover:translate-x-1"
+            />
           </Link>
         </div>
       </div>
@@ -115,4 +118,4 @@ const Music: React.FC = () => {
   )
 }
 
-export default Music;
+export default Music
