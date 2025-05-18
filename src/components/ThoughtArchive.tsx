@@ -4,165 +4,146 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
-interface Thought {
+interface ThoughtCardProps {
   title: string;
   excerpt: string;
   date: string;
   category: string;
   slug: string;
+  className?: string;
+  animationDelay?: string;
 }
 
-const ThoughtCard: React.FC<Thought> = ({
+interface ThoughtArchiveProps {
+  activeCategory?: string;
+  setActiveCategory?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const ThoughtCard: React.FC<ThoughtCardProps> = ({
   title,
   excerpt,
   date,
   category,
   slug,
+  className,
+  animationDelay = "",
 }) => {
   return (
-    <div>
-      <h3>{title}</h3>
-      <p>{excerpt}</p>
-      <p>{date}</p>
-      <p>{category}</p>
+    <div className={cn(
+      "bg-gradient-to-br from-[#252525]/90 to-[#151515]/95 p-8 rounded-xl animate-fade-in card-hover border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm relative overflow-hidden group",
+      animationDelay,
+      className
+    )}>
+      <div className="mb-4 flex justify-between items-start">
+        <span className="text-xs font-medium text-portfolio-accent bg-portfolio-accent/10 px-3 py-1 rounded-full">{category}</span>
+        <div className="flex items-center text-xs text-portfolio-text-muted">
+          <Calendar size={12} className="mr-1" />
+          {date}
+        </div>
+      </div>
+      
+      <h3 className="text-2xl font-bold mb-2 group-hover:text-portfolio-accent transition-colors duration-300 relative">
+        {title}
+        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-portfolio-accent group-hover:w-1/3 transition-all duration-500 ease-out"></span>
+      </h3>
+      
+      <p className="text-portfolio-text-muted mb-6 text-sm line-clamp-3 group-hover:text-white/70 transition-colors duration-300">{excerpt}</p>
+      
+      <Link 
+        to={`/thought-detail/${slug}`}
+        className="inline-block px-5 py-2.5 border border-white/20 rounded-full group-hover:bg-portfolio-accent group-hover:border-portfolio-accent transition-all duration-500 group flex items-center gap-2 relative overflow-hidden bg-gradient-to-r from-transparent to-transparent hover:from-portfolio-accent/20 hover:to-purple-900/20"
+      >
+        <span className="relative z-10">Continue Reading</span>
+        <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform relative z-10" />
+        
+        <span className="absolute inset-0 bg-portfolio-accent/0 group-hover:bg-portfolio-accent/10 blur-md transition-all duration-500"></span>
+      </Link>
     </div>
   );
 };
 
-const ThoughtsList = () => {
-  const { theme, isChanging } = useTheme();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [filter, setFilter] = useState("all");
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-  }, []);
-
-  const thoughtsData: Thought[] = [
+const ThoughtArchive: React.FC<ThoughtArchiveProps> = ({ 
+  activeCategory = "All", 
+  setActiveCategory = () => {} 
+}) => {
+  const categories = ["All", "Design Theory", "UI Trends", "Future Tech", "Design Systems"];
+  
+  const thoughts = [
     {
-      title: "The Art of Sustainable Design",
-      excerpt:
-        "Explore how design can contribute to a more sustainable future by minimizing environmental impact and promoting responsible consumption.",
-      date: "2024-01-15",
-      category: "Sustainability",
-      slug: "art-of-sustainable-design",
+      title: "The Intersection of Design and Psychology",
+      excerpt: "Exploring how understanding human psychology can lead to more intuitive and effective design solutions that resonate with users on a deeper level.",
+      date: "May 2, 2025",
+      category: "Design Theory",
+      slug: "design-psychology-intersection"
     },
     {
-      title: "The Future of UX Writing",
-      excerpt:
-        "Discover the evolving role of UX writers in creating user-centered digital experiences that are both informative and engaging.",
-      date: "2024-02-20",
-      category: "UX Writing",
-      slug: "future-of-ux-writing",
+      title: "Minimalism vs. Maximalism in UI Design",
+      excerpt: "Analyzing the strengths and weaknesses of both minimalist and maximalist approaches in modern interface design and finding the balance.",
+      date: "April 15, 2025",
+      category: "UI Trends",
+      slug: "minimalism-maximalism-ui"
     },
     {
-      title: "Accessibility in Web Design",
-      excerpt:
-        "Learn how to create inclusive web experiences that are accessible to users of all abilities, ensuring equal access to information and functionality.",
-      date: "2024-03-25",
-      category: "Accessibility",
-      slug: "accessibility-in-web-design",
+      title: "The Future of Human-Computer Interaction",
+      excerpt: "Predicting how emerging technologies like AR/VR, voice interfaces, and haptic feedback will transform how we interact with digital products.",
+      date: "March 28, 2025",
+      category: "Future Tech",
+      slug: "future-human-computer-interaction"
     },
     {
-      title: "The Power of Visual Storytelling",
-      excerpt:
-        "Uncover the secrets of visual storytelling and how it can be used to captivate audiences, convey complex ideas, and create memorable brand experiences.",
-      date: "2024-04-30",
-      category: "Visual Design",
-      slug: "power-of-visual-storytelling",
+      title: "Design Systems: Beyond Component Libraries",
+      excerpt: "How modern design systems are evolving from mere component libraries to comprehensive design languages that unify product experiences.",
+      date: "March 10, 2025",
+      category: "Design Systems",
+      slug: "design-systems-evolution"
     }
   ];
 
-  const [thoughts, setThoughts] = useState<Thought[]>(thoughtsData);
-
-  const filteredThoughts =
-    filter === "all"
-      ? thoughts
-      : thoughts.filter((thought) => thought.category.toLowerCase() === filter);
-
-  const categories = ["all", ...new Set(thoughts.map((t) => t.category.toLowerCase()))];
+  const filteredThoughts = activeCategory === "All" 
+    ? thoughts 
+    : thoughts.filter(thought => thought.category === activeCategory);
 
   return (
-    <div
-      className={`${
-        theme === "dark" ? "dark" : "light"
-      } bg-portfolio-bg min-h-screen transition-colors duration-500 ${
-        isChanging ? "animate-theme-transition" : ""
-      }`}
-    >
-      <Header />
-
-      <div
-        className={`pt-32 pb-20 transition-all duration-1000 ${
-          isLoaded ? "opacity-100" : "opacity-0 transform translate-y-10"
-        }`}
-      >
-        <div className="content-container">
-          <div className="mb-12 flex flex-col items-center">
-            <h1 className="hero-title text-5xl md:text-6xl font-black text-center mb-6">
-              ALL THOUGHTS
-            </h1>
-            <p className="text-portfolio-text-muted max-w-2xl text-center mb-8">
-              Explore my complete collection of thoughts and musings on design,
-              technology, and the world around us.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className={`tag px-4 py-2 transition-all duration-300 ${
-                    filter === category ? "bg-white text-black" : "hover:bg-white/10"
-                  }`}
-                  onClick={() => setFilter(category)}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {filteredThoughts.map((thought, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-[#252525]/90 to-[#151515]/95 p-8 rounded-xl animate-fade-in card-hover border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm relative overflow-hidden group"
-                style={{ animationDelay: `${index * 50}ms` }}
+    <section className="py-24 relative" id="thoughts">
+      <div className="absolute top-20 right-20 w-80 h-80 bg-portfolio-accent opacity-5 rounded-full filter blur-3xl"></div>
+      
+      <div className="content-container">
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 animate-fade-in relative inline-block">
+          <span className="hero-title">THOUGHT ARCHIVE</span>
+          <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
+        </h2>
+        
+        {/* Updated category buttons to match Thoughts page */}
+        <div className="mb-12">
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`tag px-4 py-2 transition-all duration-300 ${activeCategory === category ? 'bg-white text-black' : 'hover:bg-white/10'}`}
+                onClick={() => setActiveCategory(category)}
               >
-                <div className="mb-4 flex justify-between items-start">
-                  <span className="text-xs font-medium text-portfolio-accent bg-portfolio-accent/10 px-3 py-1 rounded-full">
-                    {thought.category}
-                  </span>
-                  <span className="text-xs text-portfolio-text-muted flex items-center">
-                    <Calendar size={12} className="mr-1" />
-                    {thought.date}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold mb-2 group-hover:text-portfolio-accent transition-colors duration-300 relative">
-                  {thought.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-portfolio-accent group-hover:w-1/3 transition-all duration-500 ease-out"></span>
-                </h3>
-
-                <p className="text-portfolio-text-muted mb-6 text-sm line-clamp-3 group-hover:text-white/70 transition-colors duration-300">
-                  {thought.excerpt}
-                </p>
-
-                <div className="flex justify-between items-center">
-                  <Link
-                    to={`/thought-detail/${thought.slug}`}
-                    className="text-portfolio-accent font-medium text-sm flex items-center gap-1 hover:underline"
-                  >
-                    Full Insight <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
+                {category}
+              </button>
             ))}
           </div>
-
-          <div className="flex justify-center mt-16">
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {filteredThoughts.map((thought, index) => (
+            <ThoughtCard
+              key={index}
+              title={thought.title}
+              excerpt={thought.excerpt}
+              date={thought.date}
+              category={thought.category}
+              slug={thought.slug}
+              animationDelay={`animate-delay-${(index + 1) * 100}`}
+              className="hover:shadow-[0_10px_50px_rgba(139,92,246,0.15)] transition-all duration-700"
+            />
+          ))}
+        </div>
+        
+        <div className="flex justify-center mt-16">
           <Link 
             to="/thoughts"
             className="social-button flex items-center space-x-2 animate-fade-in hover-effect group hover:bg-gradient-to-r hover:from-portfolio-accent/20 hover:to-purple-900/20 hover:border-portfolio-accent/50"
