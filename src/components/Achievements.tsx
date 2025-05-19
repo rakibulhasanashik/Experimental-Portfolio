@@ -23,7 +23,6 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
 }) => {
   return (
     <div className={cn(
-      "w-full md:w-[450px] h-auto p-6"
       "bg-gradient-to-br from-[#1f1f1f]/80 to-[#0f0f0f]/90 p-8 rounded-xl animate-fade-in card-hover border-l-2 border-t-2 border-r-0 border-b-0 border-white/5 backdrop-blur-sm relative overflow-hidden group", 
       className
     )}>
@@ -39,12 +38,12 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
         </div>
       </div>
       
-      <h3 className="text-xl font-bold mb-2 group-hover:text-portfolio-accent transition-colors duration-300 relative">
+      <h3 className="text-2xl font-bold mb-2 group-hover:text-portfolio-accent transition-colors duration-300 relative">
         {title}
         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-portfolio-accent group-hover:w-1/3 transition-all duration-500 ease-out"></span>
       </h3>
       
-      <p className="text-base text-portfolio-text-muted mb-6 group-hover:text-white/80 transition-colors duration-300">{subtitle}</p>
+      <p className="text-sm text-portfolio-text-muted mb-6 group-hover:text-white/80 transition-colors duration-300">{subtitle}</p>
       
       <p className="text-portfolio-text-muted mb-8 relative z-10 group-hover:text-white/70 transition-colors duration-300">{description}</p>
       
@@ -66,7 +65,7 @@ const Achievements: React.FC = () => {
   return (
     <section className="py-24 relative overflow-hidden" id="achievements">
       <div className="content-container">
-        <h2 className="text-2xl md:text-2.5xl font-bold mb-16 animate-fade-in relative inline-block">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 animate-fade-in relative inline-block">
           <span className="hero-title">ACHIEVEMENTS</span>
           <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-portfolio-accent"></span>
         </h2>
